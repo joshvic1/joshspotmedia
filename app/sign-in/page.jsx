@@ -7,7 +7,13 @@ export default function SignInPage() {
   const { user, fetchMe } = useAuth();
 
   useEffect(() => {
-    fetchMe();
+    const timeout = setTimeout(() => {
+      if (!user && !loading) {
+        setShowModal(true);
+      }
+    }, 3000); // Show modal after 3 sec even if server is slow
+
+    fetchMe().finally(() => clearTimeout(timeout));
   }, []);
 
   return (
