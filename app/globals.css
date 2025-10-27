@@ -31,3 +31,14 @@ body {
 button {
   transition: all 0.2s ease-in-out;
 }
+/* NProgress customization */
+#nprogress .bar {
+  height: 3px;
+  background: #0a136e; /* Change to your brand color if needed */
+}
+#nprogress .peg {
+  box-shadow: 0 0 10px #000, 0 0 5px #000;
+}
+#nprogress .spinner {
+  display: none; /* Hide default spinner */
+}
