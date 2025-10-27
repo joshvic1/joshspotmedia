@@ -61,8 +61,8 @@ export default function Dashboard() {
           </p>
 
           <NoticeBar storageKey="home-top-notice" ttlMs={24 * 60 * 60 * 1000}>
-            <b>Note</b> This dashboard displays all users daily earning records.
-            Always updated between <b>10 PM - 7 AM</b>.
+            <b>Note</b> This dashboard displays all onboarded users daily
+            earning records. Always updated between <b>10 PM - 7 AM</b>.
           </NoticeBar>
 
           {/* ✅ Proper loading state */}
