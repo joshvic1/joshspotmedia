@@ -1,5 +1,6 @@
 "use client";
 
+import NoticeBar from "@/components/NoticeBar";
 import React from "react";
 
 export default function NotesPage() {
@@ -64,66 +65,99 @@ export default function NotesPage() {
         </table>
       </section>
 
-      {/* Rules & Expectations */}
-      <section className="mb-10">
-        <h2 className="text-xl font-semibold mb-2">3. Rules & Expectations</h2>
-        <ul className="list-disc pl-5 space-y-2 text-sm">
-          <li>You must be logged in to access any page.</li>
-          <li>
-            Advert enquiries must be responded to immediately or forwarded to
-            the business line.
-          </li>
-          <li>
-            Only close a conversation after resolving the customer’s issue.
-          </li>
-          <li>
-            Avoid ignoring unread messages or leaving conversations pending.
-          </li>
-        </ul>
-      </section>
-
-      {/* Penalties */}
-      <section className="mb-10">
-        <h2 className="text-xl font-semibold mb-2">4. Penalties System</h2>
-        <table className="w-full table-auto border border-gray-300 text-sm">
-          <thead>
-            <tr className="bg-gray-100">
-              <th className="border px-4 py-2 text-left">Violation</th>
-              <th className="border px-4 py-2 text-left">Penalty</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td className="border px-4 py-2">Ignoring customer messages</td>
-              <td className="border px-4 py-2">
-                Daily earnings deduction or warning.
-              </td>
-            </tr>
-            <tr>
-              <td className="border px-4 py-2">
-                Closing unresolved conversations
-              </td>
-              <td className="border px-4 py-2">
-                Penalty recorded and reduces payout.
-              </td>
-            </tr>
-            <tr>
-              <td className="border px-4 py-2">Late advert posting</td>
-              <td className="border px-4 py-2">Salary deduction.</td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
-
       {/* Salary & Payout */}
       <section>
-        <h2 className="text-xl font-semibold mb-2">5. Salary & Payout</h2>
+        <h2 className="text-xl font-semibold mb-2">Salary & Payout</h2>
         <p className="text-sm">
           Earnings are calculated daily between <b>10 PM - 7 AM</b>. Records
           appear automatically on the dashboard. Each record may include base
-          earnings, bonuses, and deductions. Payouts are transferred weekly or
-          monthly depending on admin policy.
+          earnings, bonuses, and deductions. Payouts are transferred weekly
+          every SUNDAY.
         </p>
+      </section>
+      <br />
+      {/* Salary & Payout */}
+      <section>
+        <h2 className="text-xl font-semibold mb-2">SHIFT</h2>
+        <NoticeBar>
+          <b>30/10 - (Monday)</b>
+          <br />
+          <br />
+          deyikswe****@gmail.com
+          <br />
+          pit****@gmail.com
+          <br /> cjhsj***@gmail.com
+          <br />
+          anty***@gmail.com <br />
+          <br />
+          <br />
+          <b>31/10 - (Tuesday)</b>
+          <br />
+          <br />
+          pit****@gmail.com
+          <br />
+          samchi****@gmail.com
+          <br /> weyl****@gmail.com
+          <br />
+          swe****@gmail.com
+          <br />
+          <br />
+          <b>1/11 - (Wednesday)</b>
+          <br />
+          <br />
+          deyikswe****@gmail.com
+          <br />
+          pit****@gmail.com
+          <br /> cjhsj***@gmail.com
+          <br />
+          anty***@gmail.com <br />
+          <br />
+          <br />
+          <b>2/11 - (Thursday)</b>
+          <br />
+          <br />
+          deyikswe****@gmail.com
+          <br />
+          pit****@gmail.com
+          <br /> cjhsj***@gmail.com
+          <br />
+          anty***@gmail.com <br />
+          <br />
+          <br />
+          <b>3/11 - (Friday)</b>
+          <br />
+          <br />
+          deyikswe****@gmail.com
+          <br />
+          pit****@gmail.com
+          <br /> cjhsj***@gmail.com
+          <br />
+          anty***@gmail.com <br />
+          <br />
+          <br />
+          <b>4/11 - (Saturday)</b>
+          <br />
+          <br />
+          deyikswe****@gmail.com
+          <br />
+          pit****@gmail.com
+          <br /> cjhsj***@gmail.com
+          <br />
+          anty***@gmail.com <br />
+          <br />
+          <br />
+          <b>5/11 - (Sunday)</b>
+          <br />
+          <br />
+          deyikswe****@gmail.com
+          <br />
+          pit****@gmail.com
+          <br /> cjhsj***@gmail.com
+          <br />
+          anty***@gmail.com <br />
+          <br />
+          <br />
+        </NoticeBar>
       </section>
     </div>
   );

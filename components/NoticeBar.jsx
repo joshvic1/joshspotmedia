@@ -78,13 +78,13 @@ export default function NoticeBar({
             children
           )}
         </div>
-        <button
+        {/* <button
           onClick={handleClose}
           aria-label="Dismiss notice"
           className="ml-auto rounded-md p-1 hover:bg-blue-200/60"
         >
           <XMarkIcon className="h-5 w-5 text-blue-700" />
-        </button>
+        </button> */}
       </div>
 
       {/* subtle inner ring for polish */}

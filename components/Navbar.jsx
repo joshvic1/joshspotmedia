@@ -87,7 +87,7 @@ function NavLinks({ pathname, onClick }) {
     { href: "/records", label: "Records" },
     // { href: "/summary", label: "Summary" },
     { href: "/salary", label: "Payout" },
-    { href: "/note", label: "Documentation" },
+    { href: "/note", label: "NOTICE" },
   ];
 
   return links.map((link) => (
