@@ -50,10 +50,17 @@ export default function Dashboard() {
       {user && (
         <main className="max-w-5xl mx-auto px-4 sm:px-6 pt-20 pb-10">
           <h1 className="text-2xl font-bold mb-6 text-gray-900">Dashboard</h1>
+          {user && (
+            <p className="text-sm text-gray-600 mb-4">
+              Welcome, you are logged in as{" "}
+              <span className="font-semibold">{user.email}</span>
+            </p>
+          )}
+
           {/* Blue notice bar */}
           <NoticeBar storageKey="home-top-notice" ttlMs={24 * 60 * 60 * 1000}>
-            <b>Note</b> This dashboard displays all users automatically
-            calculaated payout.Always updated daily between 10pm -7am.{" "}
+            <b>Note</b> "This Dashboard contains all users daily earnings
+            including yours.Always updated daily between 10pm -7am{" "}
           </NoticeBar>
 
           {records.length === 0 ? (
