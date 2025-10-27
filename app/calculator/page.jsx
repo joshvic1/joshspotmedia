@@ -30,7 +30,7 @@ export default function CalculatorPage() {
         <main className="max-w-4xl mx-auto pt-24 px-4">
           <NoticeBar>
             <b>Note:</b> Use this calculator to estimate daily salary based on
-            your perdormance for the day
+            your performance for the day
           </NoticeBar>
           <h1 className="text-2xl font-semibold mb-4">Salary Calculator</h1>
           <SalaryCalculator />

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Navbar from "@/components/Navbar";
 import LoginModal from "@/components/LoginModal";
 import RecordCard from "@/components/RecordCard";
+import LoadingSpinner from "@/components/LoadingSpinner"; // ✅ Added
 import api from "@/lib/api";
 import { useAuth } from "@/lib/authStore";
 import { toast } from "sonner";
@@ -14,6 +15,7 @@ export default function RecordsPage() {
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);
   const [loadingMore, setLoadingMore] = useState(false);
+  const [isLoading, setIsLoading] = useState(true); // ✅ NEW
 
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
@@ -43,6 +45,7 @@ export default function RecordsPage() {
 
   const loadRecords = async (pageNo = 1, reset = false) => {
     try {
+      if (reset) setIsLoading(true); // ✅ Spinner on initial or filter load
       const { data } = await api.get("/api/daily", {
         params: {
           page: pageNo,
@@ -53,17 +56,18 @@ export default function RecordsPage() {
         },
       });
 
-      // ✅ Ensure descending by date (latest first)
       const sorted = data.items.sort(
         (a, b) => new Date(b.date) - new Date(a.date)
       );
-
       setTotal(data.total);
       setPage(data.page);
+
       if (reset) setRecords(sorted);
       else setRecords((prev) => [...prev, ...sorted]);
     } catch {
       toast.error("Failed to load records");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -74,7 +78,6 @@ export default function RecordsPage() {
 
   const handleExport = () => {
     if (records.length === 0) return toast.error("No data to export");
-
     const clean = records.map((r) => ({
       Date: new Date(r.date).toLocaleDateString(),
       User: r.user?.fullName || r.user?.email,
@@ -89,7 +92,6 @@ export default function RecordsPage() {
       Unreplied: r.unrepliedChats ?? 0,
       Salary: r.finalSalary ?? 0,
     }));
-
     exportToExcel(clean, "salary_records.xlsx");
   };
 
@@ -102,7 +104,7 @@ export default function RecordsPage() {
         <main className="max-w-7xl mx-auto px-4 pt-20 pb-10">
           <h1 className="text-2xl font-semibold mb-6">Daily Salary Records</h1>
 
-          {/* Filter Section */}
+          {/* ✅ FILTER SECTION (UNCHANGED, STILL AT TOP) */}
           <div className="bg-white border rounded-xl p-4 mb-6 shadow-sm">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4 text-sm">
               <div>
@@ -157,26 +159,38 @@ export default function RecordsPage() {
             Export to Excel
           </button>
 
-          {/* Records Display */}
-          <div className="space-y-4">
-            {records.map((record) => (
-              <RecordCard key={record._id} record={record} />
-            ))}
-          </div>
+          {/* ✅ Loading Spinner for first load */}
+          {isLoading ? (
+            <LoadingSpinner />
+          ) : (
+            <>
+              {/* Records Display */}
+              <div className="space-y-4">
+                {records.map((record) => (
+                  <RecordCard key={record._id} record={record} />
+                ))}
+              </div>
 
-          {hasMore && (
-            <div className="text-center mt-6">
-              <button
-                onClick={async () => {
-                  setLoadingMore(true);
-                  await loadRecords(page + 1);
-                  setLoadingMore(false);
-                }}
-                className="bg-gray-900 text-white px-6 py-2 rounded-lg"
-              >
-                {loadingMore ? "Loading..." : "Load More"}
-              </button>
-            </div>
+              {/* ✅ Load More Spinner */}
+              {hasMore && (
+                <div className="text-center mt-6">
+                  <button
+                    onClick={async () => {
+                      setLoadingMore(true);
+                      await loadRecords(page + 1);
+                      setLoadingMore(false);
+                    }}
+                    className="bg-gray-900 text-white px-6 py-2 rounded-lg flex items-center justify-center gap-2"
+                  >
+                    {loadingMore ? (
+                      <span className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+                    ) : (
+                      "Load More"
+                    )}
+                  </button>
+                </div>
+              )}
+            </>
           )}
         </main>
       )}

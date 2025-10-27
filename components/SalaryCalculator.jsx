@@ -7,20 +7,20 @@ function calculateSalary(conversations, avgFirst, avgResponse, unreplied) {
   const resp = Number(avgResponse) || 0;
   const unr = Number(unreplied) || 0;
 
-  const base = conv * 20; // ₦20 per conversation
+  const base = conv * 20;
 
-  // Combined Avg = (First Response + Normal Response) / 2
   const combined = (first + resp) / 2;
 
-  // Penalty logic:
   let penalty = 0;
+
+  // ✅ NEW RULE – Only full 5 mins after 5 mins get penalized
   if (combined > 5) {
     const extra = combined - 5;
-    const blocks = Math.ceil(extra / 5); // Every extra 5 mins → ₦2000 penalty
+    const blocks = Math.floor(extra / 5); // 👈 Changed from Math.ceil to Math.floor
     penalty += blocks * 2000;
   }
 
-  // Unreplied penalty:
+  // ✅ Unreplied penalty
   penalty += unr * 500;
 
   const final = Math.max(base - penalty, 0);
