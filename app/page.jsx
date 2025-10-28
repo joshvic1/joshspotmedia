@@ -67,6 +67,23 @@ export default function Dashboard() {
               <a href="/note">See your work days for this week here</a>
             </u>
           </NoticeBar>
+          <NoticeBar variant="danger" className="border-red-300">
+            <div className="space-y-1">
+              <p className="font-semibold text-red-900">🚨 Penalties Apply</p>
+              <ul className="list-disc ml-5 text-red-800">
+                <li>
+                  ₦2,000 deduction for every extra <b>5 mins</b> of combined
+                  lateness
+                </li>
+                <li>
+                  ₦500 deduction for every <b>unreplied chat</b> by end of day
+                </li>
+              </ul>
+              <p className="text-xs font-medium text-red-700 mt-1">
+                These penalties are applied automatically on your dashboard.
+              </p>
+            </div>
+          </NoticeBar>
 
           {/* ✅ Proper loading state */}
           {loadingRecords ? (
