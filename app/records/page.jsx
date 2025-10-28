@@ -135,7 +135,7 @@ export default function RecordsPage() {
                   <option value="">All</option>
                   {users.map((u) => (
                     <option key={u._id} value={u._id}>
-                      {u.fullName} ({u.email})
+                      {u.fullName}
                     </option>
                   ))}
                 </select>
