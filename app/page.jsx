@@ -67,7 +67,11 @@ export default function Dashboard() {
               <a href="/note">See your work days for this week here</a>
             </u>
           </NoticeBar>
-          <NoticeBar variant="danger" className="border-red-300">
+          <NoticeBar
+            variant="danger"
+            className="border-red-300"
+            ttlMs={24 * 60 * 60 * 1000}
+          >
             <div className="space-y-1">
               <p className="font-semibold text-red-900">🚨 Penalties Apply</p>
               <ul className="list-disc ml-5 text-red-800">
