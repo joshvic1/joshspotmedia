@@ -5,9 +5,9 @@ export const SALARY_CONFIG = {
   LATE_RESPONSE_PENALTY: 2000,
   RESPONSE_TIME_THRESHOLD: 5,
   BONUS_RULES: [
-    { max: 1, bonus: 10000 },
-    { max: 3, bonus: 4000 },
-    { max: 4, bonus: 2000 },
-    { max: 5, bonus: 1000 },
+    { max: 1, bonus: 0 },
+    { max: 3, bonus: 0 },
+    { max: 4, bonus: 0 },
+    { max: 5, bonus: 0 },
   ],
 };
